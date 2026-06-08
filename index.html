@@ -1091,6 +1091,8 @@
         /* ============================================
            RESPONSIVE DESIGN
         ============================================ */
+
+        /* Tablet landscape */
         @media (max-width: 1024px) {
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1104,11 +1106,51 @@
             .device-mockup {
                 order: -1;
             }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero h1 .nowrap {
+                white-space: normal;
+            }
         }
 
+        /* Tablet portrait */
+        @media (max-width: 900px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .target-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .mockups-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .steps::before {
+                display: none;
+            }
+        }
+
+        /* Mobile */
         @media (max-width: 768px) {
             :root {
-                --section-padding: 60px 0;
+                --section-padding: 50px 0;
+            }
+
+            .container {
+                padding: 0 20px;
             }
 
             .nav-links {
@@ -1123,6 +1165,7 @@
                 justify-content: center;
                 padding: 40px;
                 transition: right var(--transition-medium);
+                z-index: 1000;
             }
 
             .nav-links.active {
@@ -1146,6 +1189,28 @@
                 transform: rotate(-45deg) translate(5px, -5px);
             }
 
+            .logo img {
+                height: 40px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 120px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .hero h1 .nowrap {
+                white-space: normal;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
             .hero-buttons {
                 flex-direction: column;
             }
@@ -1154,29 +1219,49 @@
                 width: 100%;
             }
 
-            .steps {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .section-title {
+                font-size: 1.75rem;
             }
 
-            .steps::before {
-                display: none;
+            .section-subtitle {
+                font-size: 1rem;
             }
 
             .features-grid {
                 grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .feature-card {
+                padding: 24px 20px;
             }
 
             .target-grid {
                 grid-template-columns: 1fr;
             }
 
+            .target-card {
+                padding: 32px 24px;
+            }
+
             .ai-features {
                 grid-template-columns: 1fr;
             }
 
+            .ai-agent-text .tagline {
+                font-size: 1.8rem;
+            }
+
             .mockups-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .quote blockquote {
+                font-size: 1.25rem;
+            }
+
+            .cta h2 {
+                font-size: 1.75rem;
             }
 
             .contact-info {
@@ -1187,6 +1272,12 @@
             .footer .container {
                 flex-direction: column;
                 text-align: center;
+                gap: 16px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 12px;
             }
 
             .modal {
