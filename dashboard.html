@@ -11,8 +11,9 @@
             --bg-dark: #0f2d3a;
             --bg-darker: #0a1f29;
             --bg-sidebar: #0d232d;
-            --bg-card: #143d4d;
-            --bg-card-hover: #1a4a5e;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8fffe;
+            --bg-main: #f5f7fa;
             --accent-primary: #5dd9c1;
             --accent-secondary: #4bc4ad;
             --text-light: #ffffff;
@@ -374,6 +375,7 @@
             flex: 1;
             padding: 32px;
             overflow-y: auto;
+            background: var(--bg-main);
         }
 
         .dashboard-header {
@@ -384,10 +386,11 @@
             font-size: 1.75rem;
             font-weight: 600;
             margin-bottom: 8px;
+            color: var(--bg-dark);
         }
 
         .dashboard-date {
-            color: var(--text-muted);
+            color: #64748b;
         }
 
         /* Voice Command Bar */
@@ -676,10 +679,11 @@
 
         .stat-card {
             background: var(--bg-card);
-            border: 1px solid var(--border-color);
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
             padding: 24px;
             transition: all 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
 
         .stat-card:hover {
@@ -756,10 +760,11 @@
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 4px;
+            color: var(--bg-dark);
         }
 
         .stat-label {
-            color: var(--text-muted);
+            color: #64748b;
             font-size: 14px;
         }
 
@@ -773,14 +778,15 @@
 
         .card {
             background: var(--bg-card);
-            border: 1px solid var(--border-color);
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
         }
 
         .card-header {
             padding: 20px 24px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid #e2e8f0;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -789,6 +795,7 @@
         .card-title {
             font-size: 1.1rem;
             font-weight: 600;
+            color: var(--bg-dark);
         }
 
         .card-actions {
@@ -799,9 +806,9 @@
         .card-btn {
             padding: 8px 16px;
             background: transparent;
-            border: 1px solid var(--border-color);
+            border: 1px solid #e2e8f0;
             border-radius: 6px;
-            color: var(--text-muted);
+            color: #64748b;
             font-size: 13px;
             cursor: pointer;
             transition: all 0.2s;
@@ -838,19 +845,21 @@
             align-items: center;
             gap: 16px;
             padding: 16px;
-            background: var(--bg-darker);
+            background: #f8fafc;
             border-radius: 8px;
             transition: all 0.2s;
+            border: 1px solid #e2e8f0;
         }
 
         .task-item:hover {
-            background: var(--bg-primary);
+            background: #f1f5f9;
+            border-color: var(--accent-primary);
         }
 
         .task-checkbox {
             width: 20px;
             height: 20px;
-            border: 2px solid var(--border-color);
+            border: 2px solid #cbd5e1;
             border-radius: 4px;
             cursor: pointer;
             display: flex;
@@ -889,11 +898,12 @@
         .task-title {
             font-weight: 500;
             margin-bottom: 4px;
+            color: var(--bg-dark);
         }
 
         .task-item.completed .task-title {
             text-decoration: line-through;
-            color: var(--text-muted);
+            color: #94a3b8;
         }
 
         .task-meta {
@@ -901,7 +911,7 @@
             align-items: center;
             gap: 12px;
             font-size: 12px;
-            color: var(--text-muted);
+            color: #64748b;
         }
 
         .task-tag {
@@ -951,8 +961,9 @@
             align-items: flex-start;
             gap: 12px;
             padding: 14px;
-            background: var(--bg-darker);
+            background: #f8fafc;
             border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
 
         .voice-icon {
@@ -979,12 +990,12 @@
         .voice-text {
             font-size: 14px;
             margin-bottom: 4px;
-            color: var(--text-light);
+            color: var(--bg-dark);
         }
 
         .voice-time {
             font-size: 12px;
-            color: var(--text-muted);
+            color: #64748b;
         }
 
         .voice-status {
@@ -1014,7 +1025,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 16px 20px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid #e2e8f0;
         }
 
         .calendar-nav {
@@ -1026,9 +1037,9 @@
             width: 32px;
             height: 32px;
             border-radius: 6px;
-            background: var(--bg-darker);
-            border: none;
-            color: var(--text-muted);
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: #64748b;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -1037,8 +1048,8 @@
         }
 
         .calendar-nav-btn:hover {
-            background: var(--bg-primary);
-            color: var(--text-light);
+            background: #e2e8f0;
+            color: var(--bg-dark);
         }
 
         .calendar-nav-btn svg {
@@ -1060,7 +1071,7 @@
         .calendar-weekday {
             text-align: center;
             font-size: 11px;
-            color: var(--text-muted);
+            color: #64748b;
             padding: 8px 0;
         }
 
@@ -1079,14 +1090,15 @@
             font-size: 13px;
             cursor: pointer;
             transition: all 0.2s;
+            color: var(--bg-dark);
         }
 
         .calendar-day:hover {
-            background: var(--bg-primary);
+            background: #e2e8f0;
         }
 
         .calendar-day.other-month {
-            color: var(--text-muted);
+            color: #94a3b8;
             opacity: 0.5;
         }
 
@@ -1108,7 +1120,7 @@
 
         .calendar-events {
             padding: 16px 20px;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid #e2e8f0;
         }
 
         .calendar-event {
@@ -1116,9 +1128,10 @@
             align-items: center;
             gap: 12px;
             padding: 12px;
-            background: var(--bg-darker);
+            background: #f8fafc;
             border-radius: 8px;
             margin-bottom: 8px;
+            border: 1px solid #e2e8f0;
         }
 
         .calendar-event:last-child {
@@ -1134,6 +1147,7 @@
 
         .event-title {
             font-size: 14px;
+            color: var(--bg-dark);
         }
 
         /* Activity Feed */
@@ -1278,8 +1292,9 @@
             align-items: center;
             gap: 12px;
             padding: 12px;
-            background: var(--bg-darker);
+            background: #f8fafc;
             border-radius: 8px;
+            border: 1px solid #e2e8f0;
         }
 
         .member-avatar {
@@ -1301,11 +1316,12 @@
         .member-name {
             font-weight: 500;
             margin-bottom: 2px;
+            color: var(--bg-dark);
         }
 
         .member-role {
             font-size: 12px;
-            color: var(--text-muted);
+            color: #64748b;
         }
 
         .member-status {
@@ -1339,16 +1355,17 @@
             align-items: center;
             gap: 12px;
             padding: 20px;
-            background: var(--bg-darker);
+            background: #f8fafc;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
-            border: 1px solid transparent;
+            border: 1px solid #e2e8f0;
         }
 
         .quick-action:hover {
             border-color: var(--accent-primary);
             transform: translateY(-2px);
+            background: #f1f5f9;
         }
 
         .quick-action-icon {
@@ -1371,6 +1388,7 @@
             font-size: 13px;
             font-weight: 500;
             text-align: center;
+            color: var(--bg-dark);
         }
 
         
