@@ -390,6 +390,183 @@
             color: var(--text-muted);
         }
 
+        /* Voice Command Bar */
+        .voice-command-bar {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-primary) 100%);
+            border: 2px solid var(--accent-primary);
+            border-radius: 16px;
+            padding: 24px 32px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .voice-command-bar::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(93, 217, 193, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .voice-btn-main {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(93, 217, 193, 0.4);
+            transition: all 0.3s;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .voice-btn-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(93, 217, 193, 0.5);
+        }
+
+        .voice-btn-main.listening {
+            animation: pulse-main 1.5s infinite;
+        }
+
+        .voice-btn-main svg {
+            width: 32px;
+            height: 32px;
+            color: var(--bg-dark);
+        }
+
+        .voice-btn-ring {
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 2px solid var(--accent-primary);
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .voice-btn-main.listening .voice-btn-ring {
+            animation: ring-pulse 1.5s infinite;
+        }
+
+        @keyframes pulse-main {
+            0%, 100% {
+                box-shadow: 0 4px 20px rgba(93, 217, 193, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 40px rgba(93, 217, 193, 0.8);
+            }
+        }
+
+        @keyframes ring-pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .voice-command-content {
+            flex: 1;
+        }
+
+        .voice-command-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .voice-command-title .live-indicator {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.3; }
+        }
+
+        .voice-command-subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .voice-command-input {
+            display: flex;
+            align-items: center;
+            background: var(--bg-darker);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 16px;
+            gap: 12px;
+        }
+
+        .voice-command-input input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 15px;
+            outline: none;
+        }
+
+        .voice-command-input input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .voice-command-input .input-icon {
+            color: var(--text-muted);
+        }
+
+        .voice-command-input .input-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .voice-examples {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .voice-example {
+            padding: 6px 12px;
+            background: rgba(93, 217, 193, 0.1);
+            border: 1px solid rgba(93, 217, 193, 0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--accent-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .voice-example:hover {
+            background: rgba(93, 217, 193, 0.2);
+            border-color: var(--accent-primary);
+        }
+
         /* Stats Grid */
         .stats-grid {
             display: grid;
@@ -1097,49 +1274,7 @@
             text-align: center;
         }
 
-        /* Voice Button */
-        .voice-button {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: var(--accent-primary);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(93, 217, 193, 0.4);
-            transition: all 0.3s;
-            z-index: 1000;
-        }
-
-        .voice-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(93, 217, 193, 0.5);
-        }
-
-        .voice-button.listening {
-            animation: pulse 1.5s infinite;
-        }
-
-        .voice-button svg {
-            width: 28px;
-            height: 28px;
-            color: var(--bg-dark);
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 4px 20px rgba(93, 217, 193, 0.4);
-            }
-            50% {
-                box-shadow: 0 4px 40px rgba(93, 217, 193, 0.8);
-            }
-        }
-
+        
         /* Responsive */
         @media (max-width: 1400px) {
             .stats-grid {
@@ -1409,6 +1544,32 @@
             <div class="dashboard-header">
                 <h1 class="dashboard-welcome">Bentornato, Mario!</h1>
                 <p class="dashboard-date">Domenica 8 Giugno 2026</p>
+            </div>
+
+            <!-- Voice Command Bar -->
+            <div class="voice-command-bar">
+                <button class="voice-btn-main" id="voiceMainBtn" title="Clicca o premi Spazio per parlare">
+                    <span class="voice-btn-ring"></span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                        <line x1="8" y1="23" x2="16" y2="23"></line>
+                    </svg>
+                </button>
+                <div class="voice-command-content">
+                    <h3 class="voice-command-title">
+                        Parla con Voice Office
+                        <span class="live-indicator"></span>
+                    </h3>
+                    <p class="voice-command-subtitle">Clicca il microfono o premi Spazio per dare un comando vocale</p>
+                    <div class="voice-examples">
+                        <span class="voice-example">"Crea una nuova attività"</span>
+                        <span class="voice-example">"Fissa appuntamento domani"</span>
+                        <span class="voice-example">"Mostra i task urgenti"</span>
+                        <span class="voice-example">"Invia report al team"</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Stats -->
@@ -1834,16 +1995,6 @@
         </div>
     </main>
 
-    <!-- Voice Button -->
-    <button class="voice-button" id="voiceButton" title="Attiva comando vocale">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-            <line x1="12" y1="19" x2="12" y2="23"></line>
-            <line x1="8" y1="23" x2="16" y2="23"></line>
-        </svg>
-    </button>
-
     <script>
         // Sidebar Toggle
         const sidebar = document.getElementById('sidebar');
@@ -1877,17 +2028,33 @@
             });
         });
 
-        // Voice Button
-        const voiceButton = document.getElementById('voiceButton');
-        voiceButton.addEventListener('click', () => {
-            voiceButton.classList.toggle('listening');
+        // Voice Button Main
+        const voiceMainBtn = document.getElementById('voiceMainBtn');
+        const voiceExamples = document.querySelectorAll('.voice-example');
 
-            if (voiceButton.classList.contains('listening')) {
-                // Simula ascolto
-                setTimeout(() => {
-                    voiceButton.classList.remove('listening');
-                }, 3000);
+        function startListening() {
+            voiceMainBtn.classList.add('listening');
+            // Simula ascolto per 3 secondi
+            setTimeout(() => {
+                voiceMainBtn.classList.remove('listening');
+            }, 3000);
+        }
+
+        voiceMainBtn.addEventListener('click', startListening);
+
+        // Keyboard shortcut: Space to activate voice
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' && !e.target.matches('input, textarea')) {
+                e.preventDefault();
+                startListening();
             }
+        });
+
+        // Click on example to simulate voice command
+        voiceExamples.forEach(example => {
+            example.addEventListener('click', () => {
+                startListening();
+            });
         });
 
         // Navigation
