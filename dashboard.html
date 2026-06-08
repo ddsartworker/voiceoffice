@@ -513,6 +513,105 @@
             margin-bottom: 12px;
         }
 
+        /* Listening State */
+        .voice-command-bar.listening .voice-command-subtitle,
+        .voice-command-bar.listening .voice-examples {
+            display: none;
+        }
+
+        .voice-feedback {
+            display: none;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .voice-command-bar.listening .voice-feedback {
+            display: flex;
+        }
+
+        .voice-waveform {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            height: 32px;
+        }
+
+        .voice-waveform span {
+            width: 4px;
+            background: var(--accent-primary);
+            border-radius: 2px;
+            animation: wave 0.5s ease-in-out infinite;
+        }
+
+        .voice-waveform span:nth-child(1) { height: 8px; animation-delay: 0s; }
+        .voice-waveform span:nth-child(2) { height: 16px; animation-delay: 0.1s; }
+        .voice-waveform span:nth-child(3) { height: 24px; animation-delay: 0.2s; }
+        .voice-waveform span:nth-child(4) { height: 16px; animation-delay: 0.3s; }
+        .voice-waveform span:nth-child(5) { height: 8px; animation-delay: 0.4s; }
+        .voice-waveform span:nth-child(6) { height: 20px; animation-delay: 0.15s; }
+        .voice-waveform span:nth-child(7) { height: 12px; animation-delay: 0.25s; }
+
+        @keyframes wave {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.8); }
+        }
+
+        .voice-status-text {
+            font-size: 15px;
+            color: var(--accent-primary);
+            font-weight: 500;
+        }
+
+        .voice-transcript {
+            display: none;
+            background: var(--bg-darker);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 12px;
+        }
+
+        .voice-command-bar.transcribing .voice-transcript {
+            display: block;
+        }
+
+        .voice-command-bar.transcribing .voice-feedback {
+            display: none;
+        }
+
+        .voice-command-bar.transcribing .voice-examples {
+            display: none;
+        }
+
+        .voice-transcript-text {
+            color: var(--text-light);
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .voice-transcript-text::before {
+            content: '"';
+            color: var(--accent-primary);
+        }
+
+        .voice-transcript-text::after {
+            content: '"';
+            color: var(--accent-primary);
+        }
+
+        .voice-transcript-status {
+            font-size: 13px;
+            color: var(--success);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .voice-transcript-status svg {
+            width: 16px;
+            height: 16px;
+        }
+
         .voice-command-input {
             display: flex;
             align-items: center;
@@ -1563,11 +1662,27 @@
                         <span class="live-indicator"></span>
                     </h3>
                     <p class="voice-command-subtitle">Clicca il microfono o premi Spazio per dare un comando vocale</p>
+                    <div class="voice-feedback">
+                        <div class="voice-waveform">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <span class="voice-status-text">Sto ascoltando...</span>
+                    </div>
+                    <div class="voice-transcript">
+                        <p class="voice-transcript-text" id="transcriptText">Crea una nuova attività urgente per domani</p>
+                        <div class="voice-transcript-status">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span id="statusMessage">Comando eseguito!</span>
+                        </div>
+                    </div>
                     <div class="voice-examples">
-                        <span class="voice-example">"Crea una nuova attività"</span>
-                        <span class="voice-example">"Fissa appuntamento domani"</span>
-                        <span class="voice-example">"Mostra i task urgenti"</span>
-                        <span class="voice-example">"Invia report al team"</span>
+                        <span class="voice-example" data-text="Crea una nuova attività">"Crea una nuova attività"</span>
+                        <span class="voice-example" data-text="Fissa appuntamento domani alle 15">"Fissa appuntamento domani"</span>
+                        <span class="voice-example" data-text="Mostra i task urgenti">"Mostra i task urgenti"</span>
+                        <span class="voice-example" data-text="Invia report al team vendite">"Invia report al team"</span>
                     </div>
                 </div>
             </div>
@@ -2030,17 +2145,56 @@
 
         // Voice Button Main
         const voiceMainBtn = document.getElementById('voiceMainBtn');
+        const voiceCommandBar = document.querySelector('.voice-command-bar');
         const voiceExamples = document.querySelectorAll('.voice-example');
+        const transcriptText = document.getElementById('transcriptText');
+        const statusMessage = document.getElementById('statusMessage');
 
-        function startListening() {
+        const sampleCommands = [
+            { text: "Crea una nuova attività urgente per domani", response: "Attività creata con successo!" },
+            { text: "Fissa appuntamento con Mario alle 15", response: "Appuntamento aggiunto al calendario!" },
+            { text: "Mostra i task urgenti della settimana", response: "Trovati 3 task urgenti" },
+            { text: "Invia report mensile al team vendite", response: "Report inviato a 5 membri del team!" },
+            { text: "Ricordami di chiamare il cliente ABC", response: "Promemoria impostato per oggi!" }
+        ];
+
+        let isListening = false;
+
+        function startListening(customText = null) {
+            if (isListening) return;
+            isListening = true;
+
+            // Fase 1: Ascolto
+            voiceCommandBar.classList.add('listening');
             voiceMainBtn.classList.add('listening');
-            // Simula ascolto per 3 secondi
+
+            // Fase 2: Dopo 2 secondi, mostra trascrizione
             setTimeout(() => {
+                voiceCommandBar.classList.remove('listening');
+                voiceCommandBar.classList.add('transcribing');
                 voiceMainBtn.classList.remove('listening');
-            }, 3000);
+
+                // Scegli un comando casuale o usa quello personalizzato
+                let command;
+                if (customText) {
+                    command = { text: customText, response: "Comando eseguito!" };
+                } else {
+                    command = sampleCommands[Math.floor(Math.random() * sampleCommands.length)];
+                }
+
+                transcriptText.textContent = command.text;
+                statusMessage.textContent = command.response;
+
+            }, 2000);
+
+            // Fase 3: Reset dopo altri 3 secondi
+            setTimeout(() => {
+                voiceCommandBar.classList.remove('transcribing');
+                isListening = false;
+            }, 5000);
         }
 
-        voiceMainBtn.addEventListener('click', startListening);
+        voiceMainBtn.addEventListener('click', () => startListening());
 
         // Keyboard shortcut: Space to activate voice
         document.addEventListener('keydown', (e) => {
@@ -2053,7 +2207,8 @@
         // Click on example to simulate voice command
         voiceExamples.forEach(example => {
             example.addEventListener('click', () => {
-                startListening();
+                const customText = example.getAttribute('data-text');
+                startListening(customText);
             });
         });
 
