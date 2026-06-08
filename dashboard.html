@@ -1706,6 +1706,10 @@
                 </div>
             </div>
             <div class="header-right">
+                <div class="lang-toggle" id="langToggle">
+                    <span class="lang-option active" data-lang="it">ITA</span>
+                    <span class="lang-option" data-lang="en">ENG</span>
+                </div>
                 <button class="header-btn">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -2515,11 +2519,7 @@
                         <div class="integration-toggle active"></div>
                     </div>
                     <div class="team-member" style="justify-content: space-between;">
-                        <div class="member-info"><div class="member-name">Lingua</div><div class="member-role" id="currentLangLabel">Italiano</div></div>
-                        <div class="lang-toggle" id="langToggle">
-                            <span class="lang-option active" data-lang="it">ITA</span>
-                            <span class="lang-option" data-lang="en">ENG</span>
-                        </div>
+                        <div class="member-info"><div class="member-name">Lingua</div><div class="member-role">Seleziona dalla barra in alto</div></div>
                     </div>
                 </div>
             </div>
@@ -2698,7 +2698,6 @@
 
         // Language Toggle
         const langOptions = document.querySelectorAll('.lang-option');
-        const currentLangLabel = document.getElementById('currentLangLabel');
 
         // Check for saved language preference
         const savedLang = localStorage.getItem('language') || 'it';
@@ -2715,7 +2714,6 @@
         function setLanguage(lang) {
             langOptions.forEach(opt => opt.classList.remove('active'));
             document.querySelector(`.lang-option[data-lang="${lang}"]`).classList.add('active');
-            currentLangLabel.textContent = lang === 'it' ? 'Italiano' : 'English';
         }
     </script>
 </body>
