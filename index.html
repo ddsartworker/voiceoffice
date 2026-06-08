@@ -1864,8 +1864,12 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            // Redirect to dashboard
-            window.location.href = 'dashboard.html';
+            // Demo credentials check
+            if (email === 'demo@voiceoffice.it' && password === 'demo2024') {
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Credenziali non valide.\n\nUsa le credenziali demo:\nEmail: demo@voiceoffice.it\nPassword: demo2024');
+            }
         });
 
         // ============================================
