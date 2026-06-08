@@ -371,11 +371,34 @@
         /* ============================================
            DASHBOARD CONTENT
         ============================================ */
-        .dashboard {
+        .dashboard, .page {
             flex: 1;
             padding: 32px;
             overflow-y: auto;
             background: var(--bg-main);
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-header {
+            margin-bottom: 32px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--bg-dark);
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            color: #64748b;
         }
 
         .dashboard-header {
@@ -1656,8 +1679,8 @@
             </div>
         </header>
 
-        <!-- Dashboard -->
-        <div class="dashboard">
+        <!-- Dashboard Page -->
+        <div class="dashboard page active" id="page-dashboard">
             <div class="dashboard-header">
                 <h1 class="dashboard-welcome">Bentornato, Alex!</h1>
                 <p class="dashboard-date">Domenica 8 Giugno 2026</p>
@@ -2126,6 +2149,331 @@
                 </div>
             </div>
         </div>
+
+        <!-- Attività Page -->
+        <div class="page" id="page-tasks">
+            <div class="page-header">
+                <h1 class="page-title">Attività</h1>
+                <p class="page-subtitle">Gestisci le tue attività e quelle del team</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Tutte le Attività</h2>
+                    <button class="card-btn primary">+ Nuova Attività</button>
+                </div>
+                <div class="card-body">
+                    <div class="tasks-list">
+                        <div class="task-item">
+                            <div class="task-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                            <div class="task-content">
+                                <div class="task-title">Finalizzare wireframe dashboard cliente</div>
+                                <div class="task-meta"><span class="task-tag urgent">Urgente</span><span>Scade alle 14:00</span></div>
+                            </div>
+                            <div class="task-assignee">SM</div>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                            <div class="task-content">
+                                <div class="task-title">Review design system con il team</div>
+                                <div class="task-meta"><span class="task-tag normal">Normale</span><span>Ore 15:30</span></div>
+                            </div>
+                            <div class="task-assignee">AC</div>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                            <div class="task-content">
+                                <div class="task-title">Prototipo interattivo mobile app</div>
+                                <div class="task-meta"><span class="task-tag normal">Normale</span><span>Scade domani</span></div>
+                            </div>
+                            <div class="task-assignee">MA</div>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                            <div class="task-content">
+                                <div class="task-title">Iconografia e asset per handoff</div>
+                                <div class="task-meta"><span class="task-tag low">Bassa</span><span>Scade venerdì</span></div>
+                            </div>
+                            <div class="task-assignee">MA</div>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                            <div class="task-content">
+                                <div class="task-title">User journey map per nuovo flusso</div>
+                                <div class="task-meta"><span class="task-tag normal">Normale</span><span>Scade lunedì</span></div>
+                            </div>
+                            <div class="task-assignee">EK</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendario Page -->
+        <div class="page" id="page-calendar">
+            <div class="page-header">
+                <h1 class="page-title">Calendario</h1>
+                <p class="page-subtitle">Visualizza e gestisci i tuoi appuntamenti</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Giugno 2026</h2>
+                    <button class="card-btn primary">+ Nuovo Evento</button>
+                </div>
+                <div class="card-body">
+                    <p style="color: #64748b; text-align: center; padding: 60px 0;">Calendario completo in arrivo...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comandi Vocali Page -->
+        <div class="page" id="page-voice">
+            <div class="page-header">
+                <h1 class="page-title">Comandi Vocali</h1>
+                <p class="page-subtitle">Cronologia e statistiche dei comandi vocali</p>
+            </div>
+            <div class="stats-grid" style="margin-bottom: 24px;">
+                <div class="stat-card">
+                    <div class="stat-value">1,248</div>
+                    <div class="stat-label">Comandi Totali</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">98.5%</div>
+                    <div class="stat-label">Tasso di Successo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">156</div>
+                    <div class="stat-label">Comandi Oggi</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">1.2s</div>
+                    <div class="stat-label">Tempo Medio Risposta</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Cronologia Comandi</h2>
+                </div>
+                <div class="card-body">
+                    <div class="voice-commands">
+                        <div class="voice-item">
+                            <div class="voice-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path></svg></div>
+                            <div class="voice-content"><div class="voice-text">"Crea task urgente per revisione wireframe"</div><div class="voice-time">10 minuti fa</div></div>
+                            <span class="voice-status success">Eseguito</span>
+                        </div>
+                        <div class="voice-item">
+                            <div class="voice-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path></svg></div>
+                            <div class="voice-content"><div class="voice-text">"Fissa appuntamento con Sarah alle 15"</div><div class="voice-time">25 minuti fa</div></div>
+                            <span class="voice-status success">Eseguito</span>
+                        </div>
+                        <div class="voice-item">
+                            <div class="voice-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path></svg></div>
+                            <div class="voice-content"><div class="voice-text">"Mostra attività di questa settimana"</div><div class="voice-time">1 ora fa</div></div>
+                            <span class="voice-status success">Eseguito</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messaggi Page -->
+        <div class="page" id="page-messages">
+            <div class="page-header">
+                <h1 class="page-title">Messaggi</h1>
+                <p class="page-subtitle">Comunicazioni con il team</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Conversazioni Recenti</h2>
+                </div>
+                <div class="card-body">
+                    <div class="team-list">
+                        <div class="team-member" style="cursor: pointer;">
+                            <div class="member-avatar">SM</div>
+                            <div class="member-info"><div class="member-name">Sarah Mitchell</div><div class="member-role">Ho aggiornato il prototipo...</div></div>
+                            <span style="font-size: 12px; color: #64748b;">2 min</span>
+                        </div>
+                        <div class="team-member" style="cursor: pointer;">
+                            <div class="member-avatar">MA</div>
+                            <div class="member-info"><div class="member-name">Marcus Andersson</div><div class="member-role">Perfetto, procedo con le icone</div></div>
+                            <span style="font-size: 12px; color: #64748b;">15 min</span>
+                        </div>
+                        <div class="team-member" style="cursor: pointer;">
+                            <div class="member-avatar">EK</div>
+                            <div class="member-info"><div class="member-name">Elena Kovacs</div><div class="member-role">La user research è completata</div></div>
+                            <span style="font-size: 12px; color: #64748b;">1 ora</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Page -->
+        <div class="page" id="page-team">
+            <div class="page-header">
+                <h1 class="page-title">Team</h1>
+                <p class="page-subtitle">Gestisci i membri del tuo team</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Membri del Team</h2>
+                    <button class="card-btn primary">+ Invita Membro</button>
+                </div>
+                <div class="card-body">
+                    <div class="team-list">
+                        <div class="team-member">
+                            <div class="member-avatar">AC</div>
+                            <div class="member-info"><div class="member-name">Alex Chen</div><div class="member-role">Creative Director</div></div>
+                            <div class="member-status online"></div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">SM</div>
+                            <div class="member-info"><div class="member-name">Sarah Mitchell</div><div class="member-role">UX Lead</div></div>
+                            <div class="member-status online"></div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">MA</div>
+                            <div class="member-info"><div class="member-name">Marcus Andersson</div><div class="member-role">UI Designer</div></div>
+                            <div class="member-status busy"></div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">EK</div>
+                            <div class="member-info"><div class="member-name">Elena Kovacs</div><div class="member-role">Product Designer</div></div>
+                            <div class="member-status offline"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrazioni Page -->
+        <div class="page" id="page-integrations">
+            <div class="page-header">
+                <h1 class="page-title">Integrazioni</h1>
+                <p class="page-subtitle">Collega i tuoi strumenti preferiti</p>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">App Connesse</h2>
+                </div>
+                <div class="card-body">
+                    <div class="team-list">
+                        <div class="team-member">
+                            <div class="member-avatar" style="background: #4285f4; font-size: 16px;">G</div>
+                            <div class="member-info"><div class="member-name">Google Calendar</div><div class="member-role">Sincronizza appuntamenti</div></div>
+                            <div class="integration-toggle active"></div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" style="background: #0052cc; font-size: 16px;">J</div>
+                            <div class="member-info"><div class="member-name">Jira</div><div class="member-role">Gestione progetti</div></div>
+                            <div class="integration-toggle active"></div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" style="background: #f24e1e; font-size: 16px;">F</div>
+                            <div class="member-info"><div class="member-name">Figma</div><div class="member-role">Design collaboration</div></div>
+                            <div class="integration-toggle active"></div>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar" style="background: #4a154b; font-size: 16px;">S</div>
+                            <div class="member-info"><div class="member-name">Slack</div><div class="member-role">Messaggistica team</div></div>
+                            <div class="integration-toggle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Page -->
+        <div class="page" id="page-reports">
+            <div class="page-header">
+                <h1 class="page-title">Report</h1>
+                <p class="page-subtitle">Analisi e statistiche del team</p>
+            </div>
+            <div class="stats-grid" style="margin-bottom: 24px;">
+                <div class="stat-card">
+                    <div class="stat-value">89%</div>
+                    <div class="stat-label">Task Completati</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">24</div>
+                    <div class="stat-label">Progetti Attivi</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">156h</div>
+                    <div class="stat-label">Ore Lavorate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">4.8</div>
+                    <div class="stat-label">Rating Cliente</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Performance Team</h2>
+                    <button class="card-btn">Esporta PDF</button>
+                </div>
+                <div class="card-body">
+                    <p style="color: #64748b; text-align: center; padding: 60px 0;">Grafici e report dettagliati in arrivo...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impostazioni Page -->
+        <div class="page" id="page-settings">
+            <div class="page-header">
+                <h1 class="page-title">Impostazioni</h1>
+                <p class="page-subtitle">Configura il tuo account e le preferenze</p>
+            </div>
+            <div class="card" style="margin-bottom: 24px;">
+                <div class="card-header">
+                    <h2 class="card-title">Profilo</h2>
+                </div>
+                <div class="card-body">
+                    <div class="team-member" style="border: none; background: transparent; padding: 0;">
+                        <div class="member-avatar" style="width: 64px; height: 64px; font-size: 24px;">AC</div>
+                        <div class="member-info">
+                            <div class="member-name" style="font-size: 18px;">Alex Chen</div>
+                            <div class="member-role">alex.chen@voiceoffice.it</div>
+                            <div class="member-role">Creative Director</div>
+                        </div>
+                        <button class="card-btn">Modifica</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="margin-bottom: 24px;">
+                <div class="card-header">
+                    <h2 class="card-title">Preferenze Vocali</h2>
+                </div>
+                <div class="card-body">
+                    <div class="team-member" style="justify-content: space-between;">
+                        <div class="member-info"><div class="member-name">Attiva comandi vocali</div><div class="member-role">Abilita il controllo vocale</div></div>
+                        <div class="integration-toggle active"></div>
+                    </div>
+                    <div class="team-member" style="justify-content: space-between;">
+                        <div class="member-info"><div class="member-name">Feedback sonoro</div><div class="member-role">Suono di conferma comandi</div></div>
+                        <div class="integration-toggle active"></div>
+                    </div>
+                    <div class="team-member" style="justify-content: space-between;">
+                        <div class="member-info"><div class="member-name">Lingua</div><div class="member-role">Italiano</div></div>
+                        <button class="card-btn">Cambia</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Notifiche</h2>
+                </div>
+                <div class="card-body">
+                    <div class="team-member" style="justify-content: space-between;">
+                        <div class="member-info"><div class="member-name">Email</div><div class="member-role">Notifiche via email</div></div>
+                        <div class="integration-toggle active"></div>
+                    </div>
+                    <div class="team-member" style="justify-content: space-between;">
+                        <div class="member-info"><div class="member-name">Push</div><div class="member-role">Notifiche push nel browser</div></div>
+                        <div class="integration-toggle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <script>
@@ -2232,11 +2580,24 @@
 
         // Navigation
         const navItems = document.querySelectorAll('.nav-item[data-page]');
+        const pages = document.querySelectorAll('.page');
+
         navItems.forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault();
+                const pageName = item.getAttribute('data-page');
+
+                // Update active nav item
                 navItems.forEach(i => i.classList.remove('active'));
                 item.classList.add('active');
+
+                // Show the correct page
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                    if (page.id === 'page-' + pageName) {
+                        page.classList.add('active');
+                    }
+                });
 
                 // Close mobile menu if open
                 sidebar.classList.remove('mobile-open');
