@@ -24,6 +24,25 @@
             --warning: #fbbf24;
             --danger: #f87171;
             --info: #60a5fa;
+
+            /* Light mode specific */
+            --card-text: #0f2d3a;
+            --card-text-muted: #64748b;
+            --card-border: #e2e8f0;
+            --card-item-bg: #f8fafc;
+            --card-item-hover: #f1f5f9;
+        }
+
+        /* Dark Mode */
+        body.dark-mode {
+            --bg-card: #143d4d;
+            --bg-card-hover: #1a4a5e;
+            --bg-main: #0f2d3a;
+            --card-text: #ffffff;
+            --card-text-muted: #a8c5d1;
+            --card-border: rgba(93, 217, 193, 0.15);
+            --card-item-bg: #0a1f29;
+            --card-item-hover: #1a4a5e;
         }
 
         * {
@@ -130,7 +149,7 @@
         }
 
         .nav-item:hover {
-            background: var(--bg-card);
+            background: rgba(93, 217, 193, 0.15);
             color: var(--text-light);
         }
 
@@ -398,7 +417,7 @@
         }
 
         .page-subtitle {
-            color: #64748b;
+            color: var(--card-text-muted);
         }
 
         .dashboard-header {
@@ -413,7 +432,7 @@
         }
 
         .dashboard-date {
-            color: #64748b;
+            color: var(--card-text-muted);
         }
 
         /* Voice Command Bar */
@@ -703,7 +722,7 @@
 
         .stat-card {
             background: var(--bg-card);
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--card-border);
             border-radius: 12px;
             padding: 24px;
             transition: all 0.2s;
@@ -788,7 +807,7 @@
         }
 
         .stat-label {
-            color: #64748b;
+            color: var(--card-text-muted);
             font-size: 14px;
         }
 
@@ -802,7 +821,7 @@
 
         .card {
             background: var(--bg-card);
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--card-border);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 1px 3px rgba(0,0,0,0.08);
@@ -810,7 +829,7 @@
 
         .card-header {
             padding: 20px 24px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--card-border);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -830,9 +849,9 @@
         .card-btn {
             padding: 8px 16px;
             background: transparent;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--card-border);
             border-radius: 6px;
-            color: #64748b;
+            color: var(--card-text-muted);
             font-size: 13px;
             cursor: pointer;
             transition: all 0.2s;
@@ -869,21 +888,21 @@
             align-items: center;
             gap: 16px;
             padding: 16px;
-            background: #f8fafc;
+            background: var(--card-item-bg);
             border-radius: 8px;
             transition: all 0.2s;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--card-border);
         }
 
         .task-item:hover {
-            background: #f1f5f9;
+            background: var(--card-item-hover);
             border-color: var(--accent-primary);
         }
 
         .task-checkbox {
             width: 20px;
             height: 20px;
-            border: 2px solid #cbd5e1;
+            border: 2px solid var(--card-border);
             border-radius: 4px;
             cursor: pointer;
             display: flex;
@@ -927,7 +946,7 @@
 
         .task-item.completed .task-title {
             text-decoration: line-through;
-            color: #94a3b8;
+            color: var(--card-text-muted);
         }
 
         .task-meta {
@@ -935,7 +954,7 @@
             align-items: center;
             gap: 12px;
             font-size: 12px;
-            color: #64748b;
+            color: var(--card-text-muted);
         }
 
         .task-tag {
@@ -985,9 +1004,9 @@
             align-items: flex-start;
             gap: 12px;
             padding: 14px;
-            background: #f8fafc;
+            background: var(--card-item-bg);
             border-radius: 8px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--card-border);
         }
 
         .voice-icon {
@@ -1019,7 +1038,7 @@
 
         .voice-time {
             font-size: 12px;
-            color: #64748b;
+            color: var(--card-text-muted);
         }
 
         .voice-status {
@@ -1049,7 +1068,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 16px 20px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--card-border);
         }
 
         .calendar-nav {
@@ -1061,9 +1080,9 @@
             width: 32px;
             height: 32px;
             border-radius: 6px;
-            background: #f1f5f9;
-            border: 1px solid #e2e8f0;
-            color: #64748b;
+            background: var(--card-item-hover);
+            border: 1px solid var(--card-border);
+            color: var(--card-text-muted);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -1072,7 +1091,7 @@
         }
 
         .calendar-nav-btn:hover {
-            background: #e2e8f0;
+            background: var(--card-item-hover);
             color: var(--bg-dark);
         }
 
@@ -1095,7 +1114,7 @@
         .calendar-weekday {
             text-align: center;
             font-size: 11px;
-            color: #64748b;
+            color: var(--card-text-muted);
             padding: 8px 0;
         }
 
@@ -1118,11 +1137,11 @@
         }
 
         .calendar-day:hover {
-            background: #e2e8f0;
+            background: var(--card-item-hover);
         }
 
         .calendar-day.other-month {
-            color: #94a3b8;
+            color: var(--card-text-muted);
             opacity: 0.5;
         }
 
@@ -1144,7 +1163,7 @@
 
         .calendar-events {
             padding: 16px 20px;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--card-border);
         }
 
         .calendar-event {
@@ -1152,10 +1171,10 @@
             align-items: center;
             gap: 12px;
             padding: 12px;
-            background: #f8fafc;
+            background: var(--card-item-bg);
             border-radius: 8px;
             margin-bottom: 8px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--card-border);
         }
 
         .calendar-event:last-child {
@@ -1316,9 +1335,9 @@
             align-items: center;
             gap: 12px;
             padding: 12px;
-            background: #f8fafc;
+            background: var(--card-item-bg);
             border-radius: 8px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--card-border);
         }
 
         .member-avatar {
@@ -1345,7 +1364,7 @@
 
         .member-role {
             font-size: 12px;
-            color: #64748b;
+            color: var(--card-text-muted);
         }
 
         .member-status {
@@ -1379,17 +1398,17 @@
             align-items: center;
             gap: 12px;
             padding: 20px;
-            background: #f8fafc;
+            background: var(--card-item-bg);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s;
-            border: 1px solid #e2e8f0;
+            border: 1px solid var(--card-border);
         }
 
         .quick-action:hover {
             border-color: var(--accent-primary);
             transform: translateY(-2px);
-            background: #f1f5f9;
+            background: var(--card-item-hover);
         }
 
         .quick-action-icon {
@@ -2221,7 +2240,7 @@
                     <button class="card-btn primary">+ Nuovo Evento</button>
                 </div>
                 <div class="card-body">
-                    <p style="color: #64748b; text-align: center; padding: 60px 0;">Calendario completo in arrivo...</p>
+                    <p style="color: var(--card-text-muted); text-align: center; padding: 60px 0;">Calendario completo in arrivo...</p>
                 </div>
             </div>
         </div>
@@ -2291,17 +2310,17 @@
                         <div class="team-member" style="cursor: pointer;">
                             <div class="member-avatar">SM</div>
                             <div class="member-info"><div class="member-name">Sarah Mitchell</div><div class="member-role">Ho aggiornato il prototipo...</div></div>
-                            <span style="font-size: 12px; color: #64748b;">2 min</span>
+                            <span style="font-size: 12px; color: var(--card-text-muted);">2 min</span>
                         </div>
                         <div class="team-member" style="cursor: pointer;">
                             <div class="member-avatar">MA</div>
                             <div class="member-info"><div class="member-name">Marcus Andersson</div><div class="member-role">Perfetto, procedo con le icone</div></div>
-                            <span style="font-size: 12px; color: #64748b;">15 min</span>
+                            <span style="font-size: 12px; color: var(--card-text-muted);">15 min</span>
                         </div>
                         <div class="team-member" style="cursor: pointer;">
                             <div class="member-avatar">EK</div>
                             <div class="member-info"><div class="member-name">Elena Kovacs</div><div class="member-role">La user research è completata</div></div>
-                            <span style="font-size: 12px; color: #64748b;">1 ora</span>
+                            <span style="font-size: 12px; color: var(--card-text-muted);">1 ora</span>
                         </div>
                     </div>
                 </div>
@@ -2413,7 +2432,7 @@
                     <button class="card-btn">Esporta PDF</button>
                 </div>
                 <div class="card-body">
-                    <p style="color: #64748b; text-align: center; padding: 60px 0;">Grafici e report dettagliati in arrivo...</p>
+                    <p style="color: var(--card-text-muted); text-align: center; padding: 60px 0;">Grafici e report dettagliati in arrivo...</p>
                 </div>
             </div>
         </div>
@@ -2437,6 +2456,17 @@
                             <div class="member-role">Creative Director</div>
                         </div>
                         <button class="card-btn">Modifica</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="margin-bottom: 24px;">
+                <div class="card-header">
+                    <h2 class="card-title">Aspetto</h2>
+                </div>
+                <div class="card-body">
+                    <div class="team-member" style="justify-content: space-between;">
+                        <div class="member-info"><div class="member-name">Tema Scuro</div><div class="member-role">Passa alla modalità scura</div></div>
+                        <div class="integration-toggle" id="darkModeToggle"></div>
                     </div>
                 </div>
             </div>
@@ -2607,11 +2637,29 @@
         });
 
         // Integration Toggles
-        const integrationToggles = document.querySelectorAll('.integration-toggle');
+        const integrationToggles = document.querySelectorAll('.integration-toggle:not(#darkModeToggle)');
         integrationToggles.forEach(toggle => {
             toggle.addEventListener('click', () => {
                 toggle.classList.toggle('active');
             });
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Check for saved preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+            darkModeToggle.classList.add('active');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            darkModeToggle.classList.toggle('active');
+
+            // Save preference
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
         });
     </script>
 </body>
