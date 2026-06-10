@@ -1864,11 +1864,15 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            // Demo credentials check
-            if (email === 'demo@voiceoffice.it' && password === 'demo2024') {
+            // Admin credentials check
+            if (email === 'admin@voiceoffice.it' && password === 'admin2024') {
+                window.location.href = 'superadmin.html';
+            }
+            // User demo credentials check
+            else if (email === 'demo@voiceoffice.it' && password === 'demo2024') {
                 window.location.href = 'dashboard.html';
             } else {
-                alert('Credenziali non valide.\n\nUsa le credenziali demo:\nEmail: demo@voiceoffice.it\nPassword: demo2024');
+                alert('Credenziali non valide.\n\nCredenziali disponibili:\n\n👤 UTENTE\nEmail: demo@voiceoffice.it\nPassword: demo2024\n\n🔐 ADMIN\nEmail: admin@voiceoffice.it\nPassword: admin2024');
             }
         });
 
