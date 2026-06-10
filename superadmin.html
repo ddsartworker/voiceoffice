@@ -18,19 +18,19 @@
            CSS VARIABLES - Palette Voice Office
         ============================================ */
         :root {
-            --bg-primary: #0a0e1a;
+            --bg-primary: #ffffff;
             --bg-secondary: #141928;
-            --bg-card: #1a2035;
-            --bg-card-hover: #222940;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8fafc;
             --accent-blue: #4f8ef7;
             --accent-green: #00d4aa;
             --accent-orange: #f59e0b;
             --accent-red: #ef4444;
             --accent-purple: #8b5cf6;
-            --text-primary: #e8ecf4;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --border-color: rgba(79, 142, 247, 0.15);
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --border-color: #e2e8f0;
             --sidebar-width: 260px;
         }
 
@@ -387,11 +387,13 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
         .kpi-card:hover {
             transform: translateY(-4px);
             border-color: var(--accent-blue);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         }
 
         .kpi-card::before {
@@ -470,6 +472,7 @@
             border-radius: 16px;
             overflow: hidden;
             margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
         }
 
         .card-header {
@@ -596,12 +599,12 @@
         }
 
         th {
-            background: var(--bg-secondary);
+            background: #f8fafc;
             font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: var(--text-muted);
+            color: var(--text-secondary);
         }
 
         td {
