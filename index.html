@@ -1106,6 +1106,57 @@
             opacity: 0.8;
         }
 
+        /* Login Tabs */
+        .login-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .login-tab {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 16px;
+            background: var(--bg-dark);
+            border: 2px solid rgba(93, 217, 193, 0.2);
+            border-radius: 10px;
+            color: var(--text-muted);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .login-tab svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-muted);
+            transition: stroke var(--transition-fast);
+        }
+
+        .login-tab:hover {
+            border-color: var(--accent-primary);
+            color: var(--text-light);
+        }
+
+        .login-tab:hover svg {
+            stroke: var(--text-light);
+        }
+
+        .login-tab.active {
+            background: rgba(93, 217, 193, 0.15);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
+        }
+
+        .login-tab.active svg {
+            stroke: var(--accent-primary);
+        }
+
         /* ============================================
            RESPONSIVE DESIGN
         ============================================ */
@@ -1762,7 +1813,26 @@
 
             <h2>Accedi alla tua area</h2>
 
+            <!-- Login Type Tabs -->
+            <div class="login-tabs">
+                <button type="button" class="login-tab active" data-type="user">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Utente
+                </button>
+                <button type="button" class="login-tab" data-type="admin">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    Admin
+                </button>
+            </div>
+
             <form id="loginForm">
+                <input type="hidden" id="loginType" value="user">
+
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" placeholder="nome@azienda.it" required>
@@ -1855,6 +1925,30 @@
         });
 
         // ============================================
+        // LOGIN TABS
+        // ============================================
+        const loginTabs = document.querySelectorAll('.login-tab');
+        const loginTypeInput = document.getElementById('loginType');
+        const emailInput = document.getElementById('email');
+
+        loginTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active from all tabs
+                loginTabs.forEach(t => t.classList.remove('active'));
+                // Add active to clicked tab
+                tab.classList.add('active');
+                // Update hidden input
+                loginTypeInput.value = tab.dataset.type;
+                // Update placeholder
+                if (tab.dataset.type === 'admin') {
+                    emailInput.placeholder = 'admin@voiceoffice.it';
+                } else {
+                    emailInput.placeholder = 'nome@azienda.it';
+                }
+            });
+        });
+
+        // ============================================
         // LOGIN FORM SUBMIT
         // ============================================
         const loginForm = document.getElementById('loginForm');
@@ -1863,16 +1957,22 @@
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            const loginType = loginTypeInput.value;
 
-            // Admin credentials check
-            if (email === 'admin@voiceoffice.it' && password === 'admin2024') {
-                window.location.href = 'superadmin.html';
-            }
-            // User demo credentials check
-            else if (email === 'demo@voiceoffice.it' && password === 'demo2024') {
-                window.location.href = 'dashboard.html';
+            if (loginType === 'admin') {
+                // Admin credentials check
+                if (email === 'admin@voiceoffice.it' && password === 'admin2024') {
+                    window.location.href = 'superadmin.html';
+                } else {
+                    alert('Credenziali Admin non valide.\n\nCredenziali demo Admin:\nEmail: admin@voiceoffice.it\nPassword: admin2024');
+                }
             } else {
-                alert('Credenziali non valide.\n\nCredenziali disponibili:\n\n👤 UTENTE\nEmail: demo@voiceoffice.it\nPassword: demo2024\n\n🔐 ADMIN\nEmail: admin@voiceoffice.it\nPassword: admin2024');
+                // User credentials check
+                if (email === 'demo@voiceoffice.it' && password === 'demo2024') {
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('Credenziali Utente non valide.\n\nCredenziali demo Utente:\nEmail: demo@voiceoffice.it\nPassword: demo2024');
+                }
             }
         });
 
