@@ -77,36 +77,20 @@
 
         .sidebar-logo {
             display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .sidebar-logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .sidebar-logo-icon svg {
-            width: 22px;
-            height: 22px;
-            color: white;
-        }
-
-        .sidebar-logo-text {
-            display: flex;
             flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            text-decoration: none;
         }
 
-        .sidebar-logo-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
+        .sidebar-logo img {
+            height: 36px;
+            width: auto;
+            transition: opacity 0.2s;
+        }
+
+        .sidebar-logo:hover img {
+            opacity: 0.8;
         }
 
         .sidebar-logo-subtitle {
@@ -114,6 +98,9 @@
             color: var(--accent-green);
             font-weight: 600;
             letter-spacing: 0.5px;
+            background: rgba(0, 212, 170, 0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
         }
 
         .sidebar-nav {
@@ -1076,20 +1063,10 @@
     ============================================ -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <div class="sidebar-logo">
-                <div class="sidebar-logo-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                        <line x1="12" y1="19" x2="12" y2="23"></line>
-                        <line x1="8" y1="23" x2="16" y2="23"></line>
-                    </svg>
-                </div>
-                <div class="sidebar-logo-text">
-                    <span class="sidebar-logo-title">Voice Office</span>
-                    <span class="sidebar-logo-subtitle">SUPERADMIN</span>
-                </div>
-            </div>
+            <a href="index.html" class="sidebar-logo">
+                <img src="voiceoffice-logo.png" alt="Voice Office">
+                <span class="sidebar-logo-subtitle">SUPERADMIN</span>
+            </a>
         </div>
 
         <nav class="sidebar-nav">
